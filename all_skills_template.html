@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT-Projekt Skill Card - Alle Skills Template</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f0f2f5;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 2px solid #e1e8ed;
+            width: 100%;
+            max-width: 210mm;
+            height: auto;
+            margin: 0 auto;
+            page-break-inside: avoid;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 12px 12px 0 0;
+            text-align: center;
+        }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .name-field {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 6px;
+            padding: 8px;
+            margin-top: 10px;
+            width: calc(100% - 16px);
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .name-field::placeholder {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .section {
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 3px;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 6px;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+
+        .skill-name {
+            font-size: 12px;
+            color: #34495e;
+        }
+
+        .rating-circles {
+            display: flex;
+            gap: 3px;
+        }
+
+        .rating-circle {
+            width: 12px;
+            height: 12px;
+            border: 2px solid #bdc3c7;
+            border-radius: 50%;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .rating-circle:hover {
+            border-color: #3498db;
+            transform: scale(1.1);
+        }
+
+        .rating-circle.filled {
+            background: #3498db;
+            border-color: #3498db;
+        }
+
+        .checkbox-cell {
+            display: flex;
+            justify-content: center;
+        }
+
+        .checkbox-cell input[type="checkbox"] {
+            transform: scale(0.9);
+            margin: 0;
+        }
+
+        .work-types {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+        }
+
+        .work-type {
+            display: flex;
+            align-items: center;
+            font-size: 10px;
+            color: #2c3e50;
+            padding: 2px;
+        }
+
+        .work-type input[type="radio"] {
+            margin-right: 4px;
+            transform: scale(0.8);
+        }
+
+        .work-type.selected.primary {
+            background: #e8f5e8;
+            border-radius: 4px;
+            border: 1px solid #2ecc71;
+            font-weight: 600;
+            color: #27ae60;
+        }
+
+        .work-type.selected.secondary {
+            background: #f8f4ff;
+            border-radius: 4px;
+            border: 1px solid #9b59b6;
+            font-weight: 600;
+            color: #8e44ad;
+        }
+
+        .project-prefs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+
+        .project-pref {
+            display: flex;
+            align-items: center;
+            font-size: 11px;
+            color: #2c3e50;
+        }
+
+        .project-pref input[type="checkbox"] {
+            margin-right: 6px;
+            transform: scale(0.8);
+        }
+
+        .project-pref.suggested {
+            background: #e3f2fd;
+            border-radius: 4px;
+            border: 1px solid #2196f3;
+            padding: 2px;
+            font-weight: 600;
+            color: #1976d2;
+        }
+
+        .icebreaker-placeholder {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 20px;
+        }
+
+        .icebreaker-title {
+            font-weight: 600;
+            color: #495057;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .placeholder-line {
+            border-bottom: 1px solid #333;
+            min-height: 18px;
+            padding: 2px 0;
+            margin: 2px 0;
+        }
+
+        .notes-header {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 12px;
+            margin-bottom: 5px;
+            text-align: center;
+            background: #fff3cd;
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #ffeaa7;
+        }
+
+        .skills-category {
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 6px;
+            margin-bottom: 4px;
+        }
+
+        .category-title {
+            font-weight: 600;
+            color: #495057;
+            font-size: 11px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            .skill-card {
+                box-shadow: none;
+                border: 2px solid #333;
+                margin: 0;
+                padding: 10mm;
+                max-width: 190mm;
+                height: auto;
+                max-height: 277mm;
+            }
+            .card-container {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .icon {
+            margin-right: 4px;
+        }
+
+        .generated-note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 4px;
+            padding: 8px;
+            margin-top: 10px;
+            font-size: 10px;
+            color: #856404;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="skill-card">
+            <div class="card-header">
+                <h2>💻 IT-Projekt Skill Card - Alle Skills Template</h2>
+                <input type="text" class="name-field" id="teamleiter-name" placeholder="Teamleiter Name / Projekt">
+            </div>
+
+
+            <!-- Technische Skills - Alle möglichen Kategorien -->
+            <div class="section">
+                <div class="section-title">🔧 Technische Skills (Alle verfügbaren)</div>
+                <div class="notes-header">✏️ Markieren Sie wichtige Skills für Ihr Team</div>
+
+                <!-- Backend-Programmierung -->
+                <div class="skills-category">
+                    <div class="category-title">☕ Backend-Programmierung</div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Java</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="java"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">C# / .NET</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="csharp"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Python (Backend)</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="python-backend"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Node.js</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="nodejs"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Spring Boot</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="spring-boot"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Django</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="django"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">PHP</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="php"></div>
+                    </div>
+                </div>
+
+                <!-- Frontend & Web -->
+                <div class="skills-category">
+                    <div class="category-title">🌐 Frontend & Web</div>
+                    <div class="skill-grid">
+                        <span class="skill-name">JavaScript</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="javascript"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">TypeScript</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="typescript"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">React</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="react"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Angular</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="angular"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Vue.js</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="vue"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">HTML/CSS</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="html-css"></div>
+                    </div>
+                </div>
+
+                <!-- Scripting & Automatisierung -->
+                <div class="skills-category">
+                    <div class="category-title">🐍 Scripting & Automatisierung</div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Python (Scripting)</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="python-scripting"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Bash/Shell</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="bash"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">PowerShell</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="powershell"></div>
+                    </div>
+                </div>
+
+                <!-- Datenbank-Systeme -->
+                <div class="skills-category">
+                    <div class="category-title">🗄️ Datenbank-Systeme</div>
+                    <div class="skill-grid">
+                        <span class="skill-name">MySQL</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">PostgreSQL</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">MongoDB</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Redis</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">SQLite</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                </div>
+
+                <!-- Mobile Entwicklung -->
+                <div class="skills-category">
+                    <div class="category-title">📱 Mobile Entwicklung</div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Android Development</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">iOS Development</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">React Native</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Flutter</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Xamarin</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                </div>
+
+                <!-- UI/UX Design -->
+                <div class="skills-category">
+                    <div class="category-title">🎨 UI/UX Design</div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Figma</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Sketch</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Photoshop</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Design Thinking</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                </div>
+
+                <!-- Tools & DevOps -->
+                <div class="skills-category">
+                    <div class="category-title">🔧 Tools & DevOps</div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Git</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Docker</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Jenkins/GitHub Actions</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                </div>
+
+                <!-- Testing & Qualität -->
+                <div class="skills-category">
+                    <div class="category-title">🧪 Testing & Qualität</div>
+                    <div class="skill-grid">
+                        <span class="skill-name">JUnit/XUnit</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Jest</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Cypress</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Selenium</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">Postman/API Testing</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                    <div class="skill-grid">
+                        <span class="skill-name">SonarQube</span>
+                        <div class="rating-circles">
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                            <div class="rating-circle"></div>
+                        </div>
+                        <div class="checkbox-cell"><input type="checkbox" data-skill="skill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">👤 Arbeitstyp (Belbin-Rollen)</div>
+                <div class="notes-header">Markieren Sie wichtige Arbeitstypen für Ihr Team</div>
+                <div class="work-types">
+                    <label class="work-type">
+                        <input type="checkbox" name="worktype" value="coordinator">
+                        🎯 Koordinator
+                    </label>
+                    <label class="work-type">
+                        <input type="checkbox" name="worktype" value="shaper">
+                        ⚡ Macher
+                    </label>
+                    <label class="work-type">
+                        <input type="checkbox" name="worktype" value="plant">
+                        🌱 Neuerer
+                    </label>
+                    <label class="work-type">
+                        <input type="checkbox" name="worktype" value="resource_investigator">
+                        🔍 Wegbereiter
+                    </label>
+                    <label class="work-type">
+                        <input type="checkbox" name="worktype" value="implementer">
+                        ⚙️ Umsetzer
+                    </label>
+                    <label class="work-type">
+                        <input type="checkbox" name="worktype" value="monitor_evaluator">
+                        ⚖️ Beobachter
+                    </label>
+                    <label class="work-type">
+                        <input type="checkbox" name="worktype" value="teamworker">
+                        🤝 Teamarbeiter
+                    </label>
+                    <label class="work-type">
+                        <input type="checkbox" name="worktype" value="completer_finisher">
+                        ✨ Perfektionist
+                    </label>
+                    <label class="work-type">
+                        <input type="checkbox" name="worktype" value="specialist">
+                        🎓 Spezialist
+                    </label>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🚀 Projekt-Präferenzen (Alle verfügbaren)</div>
+                <div class="notes-header">Markieren Sie wichtige Präferenzen für Ihr Team</div>
+                <div class="project-prefs">
+                    <label class="project-pref">
+                        <input type="checkbox" name="projects" value="frontend_development">
+                        🎨 Frontend-Development
+                    </label>
+                    <label class="project-pref">
+                        <input type="checkbox" name="projects" value="backend_development">
+                        ⚙️ Backend-Development
+                    </label>
+                    <label class="project-pref">
+                        <input type="checkbox" name="projects" value="fullstack_projects">
+                        🔄 Full-Stack-Projekte
+                    </label>
+                    <label class="project-pref">
+                        <input type="checkbox" name="projects" value="mobile_first">
+                        📱 Mobile-First
+                    </label>
+                    <label class="project-pref">
+                        <input type="checkbox" name="projects" value="data_analytics">
+                        📊 Data & Analytics
+                    </label>
+                    <label class="project-pref">
+                        <input type="checkbox" name="projects" value="devops_automation">
+                        🚀 DevOps & Automation
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="generated-note">
+                📝 Teamleiter Template: Alle möglichen Skills und Rollen zur Auswahl<br>
+                ✏️ Verwenden Sie dieses Template zur Notizen und Skill-Auswahl für Ihr Team
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Local Storage Funktionalität
+        const STORAGE_KEY = 'skillcard_template_data';
+
+        // Daten laden beim Start
+        function loadData() {
+            const savedData = localStorage.getItem(STORAGE_KEY);
+            if (savedData) {
+                const data = JSON.parse(savedData);
+
+                // Teamleiter Name laden
+                if (data.teamleiterName) {
+                    document.getElementById('teamleiter-name').value = data.teamleiterName;
+                }
+
+                // Skill Checkboxen und Ratings laden
+                if (data.skills) {
+                    data.skills.forEach(skillData => {
+                        const skillName = typeof skillData === 'string' ? skillData : skillData.name;
+                        const rating = typeof skillData === 'object' ? skillData.rating : 0;
+
+                        // Suche Checkbox nach Skill-Name
+                        const skillGrids = document.querySelectorAll('.skill-grid');
+                        skillGrids.forEach(grid => {
+                            const nameElement = grid.querySelector('.skill-name');
+                            if (nameElement && nameElement.textContent.trim() === skillName) {
+                                const checkbox = grid.querySelector('input[type="checkbox"]');
+                                if (checkbox && (typeof skillData === 'object' ? skillData.checked : true)) {
+                                    checkbox.checked = true;
+                                }
+
+                                // Rating-Circles setzen
+                                if (rating > 0) {
+                                    const circles = grid.querySelectorAll('.rating-circle');
+                                    for (let i = 0; i < rating && i < circles.length; i++) {
+                                        circles[i].classList.add('filled');
+                                    }
+                                }
+                            }
+                        });
+                    });
+                }
+
+                // Arbeitstyp Checkboxen laden
+                if (data.worktypes) {
+                    data.worktypes.forEach(worktype => {
+                        const checkbox = document.querySelector(`input[name="worktype"][value="${worktype}"]`);
+                        if (checkbox) {
+                            checkbox.checked = true;
+                        }
+                    });
+                }
+
+                // Projekt-Präferenzen laden
+                if (data.projects) {
+                    data.projects.forEach(project => {
+                        const checkbox = document.querySelector(`input[name="projects"][value="${project}"]`);
+                        if (checkbox) {
+                            checkbox.checked = true;
+                        }
+                    });
+                }
+            }
+        }
+
+        // Daten speichern
+        function saveData() {
+            const skillGrids = document.querySelectorAll('.skill-grid');
+            const skillsData = [];
+
+            skillGrids.forEach(grid => {
+                const skillName = grid.querySelector('.skill-name')?.textContent?.trim();
+                const checkbox = grid.querySelector('input[type="checkbox"]');
+                const circles = grid.querySelectorAll('.rating-circle');
+
+                let rating = 0;
+                circles.forEach((circle, index) => {
+                    if (circle.classList.contains('filled')) {
+                        rating = index + 1;
+                    }
+                });
+
+                if (skillName && (checkbox?.checked || rating > 0)) {
+                    skillsData.push({
+                        name: skillName,
+                        checked: checkbox?.checked || false,
+                        rating: rating
+                    });
+                }
+            });
+
+            const data = {
+                teamleiterName: document.getElementById('teamleiter-name').value,
+                skills: skillsData,
+                worktypes: Array.from(document.querySelectorAll('input[name="worktype"]:checked')).map(cb => cb.value),
+                projects: Array.from(document.querySelectorAll('input[name="projects"]:checked')).map(cb => cb.value)
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+
+        // Daten löschen
+        function clearData() {
+            localStorage.removeItem(STORAGE_KEY);
+            location.reload();
+        }
+
+        // Rating Circle Click Handler
+        function handleRatingClick(circle) {
+            const circles = circle.parentElement.querySelectorAll('.rating-circle');
+            const clickedIndex = Array.from(circles).indexOf(circle);
+
+            // Bestimme neue Bewertung
+            let newRating = clickedIndex + 1;
+
+            // Wenn bereits alle bis zu diesem Punkt gefüllt sind, dann leeren (Toggle-Funktion)
+            const allFilledUpToIndex = Array.from(circles).slice(0, clickedIndex + 1).every(c => c.classList.contains('filled'));
+            if (allFilledUpToIndex) {
+                newRating = clickedIndex; // Eine weniger oder 0
+            }
+
+            // Alle Circles zurücksetzen
+            circles.forEach(c => c.classList.remove('filled'));
+
+            // Bis zur neuen Bewertung füllen
+            for (let i = 0; i < newRating; i++) {
+                circles[i].classList.add('filled');
+            }
+
+            // Speichern
+            saveData();
+        }
+
+        // Event Listeners hinzufügen
+        window.onload = function() {
+            loadData();
+
+            // Auto-save bei Änderungen
+            document.getElementById('teamleiter-name').addEventListener('input', saveData);
+
+            // Event Listener für alle Checkboxen
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', saveData);
+            });
+
+            // Event Listener für Rating Circles
+            document.querySelectorAll('.rating-circle').forEach(circle => {
+                circle.addEventListener('click', () => handleRatingClick(circle));
+            });
+
+            // Buttons für Aktionen hinzufügen
+            const buttonsHtml = `
+                <div style="margin-top: 15px; text-align: center;">
+                    <button onclick="window.print()" style="margin: 5px; padding: 8px 15px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">📄 Drucken</button>
+                    <button onclick="saveData(); alert('Daten gespeichert!')" style="margin: 5px; padding: 8px 15px; background: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer;">💾 Speichern</button>
+                    <button onclick="clearData()" style="margin: 5px; padding: 8px 15px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer;">🗑️ Löschen</button>
+                </div>
+            `;
+            document.querySelector('.generated-note').insertAdjacentHTML('afterend', buttonsHtml);
+        };
+    </script>
+</body>
+</html>
